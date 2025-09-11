@@ -1,3 +1,4 @@
+
 /* -------- Theme Tokens -------- */
 body, p, li, h1, h2, h3, h4, h5, h6{ color: var(--text); }
 
@@ -465,88 +466,50 @@ a { color: var(--acc); text-decoration: none; }
 .faq[open] .chev { transform: rotate(225deg); border-color: var(--acc); }
 
 
-/* --- Mobile centering & overflow fix --- */
-html, body { width:100%; overflow-x:hidden; text-align:left; }
+/* ------------------------------------------------------------- */
 
-/* container always centered */
-.container {
-  width: min(1100px, 90%);
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* sections never push content to right */
-.section > .container { display:block; }
-
-/* 2-col grids should stack on mobile */
-@media (max-width: 640px){
-  .container {
-    width: 100%;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-  .grid-2 { grid-template-columns: 1fr !important; }
-}
-
-/* cards/lists forms ko bhi center hold karao */
-.skills, .skills-list, .contact-form, .project, .hero .content {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* koi rule agar galti se right align kar raha ho to neutralize */
-[style*="text-align:right"], .text-right { text-align:left !important; }
-
-/* prevent sneaky shifts caused by translate on mobile */
+/* === Footer: mobile-only fix (<=640px) === */
 @media (max-width:640px){
-  [style*="translateX"] { transform: none !important; }
-}
-
-/* just in case: images never cause horizontal scroll */
-img { max-width:100%; height:auto; display:block; }
-
-/* Footer layout: switch to flex for better wrap control */
-.footer-grid{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:24px;
-  padding-block:16px;
-}
-
-/* left block (logo + copy) */
-.footer-left{display:flex; flex-direction:column; gap:6px; min-width:0;}
-.footer-copy{white-space:nowrap;}            /* "Copyright 2025 — Built with ♥" ek line me */
-
-/* center links: inline row */
-.footer-links{
-  display:flex;
-  gap:20px;
-  align-items:center;
-  justify-content:center;
-  flex:1 1 auto;
-  flex-wrap:wrap;                             /* desktop pe space kam ho to graceful wrap */
-}
-.footer-links a{ display:inline-block; white-space:nowrap; }
-
-/* to-top button on the right by default */
-.to-top{ flex:0 0 auto; }
-
-/* ----- Mobile tuning ----- */
-@media (max-width: 720px){
   .footer-grid{
-    flex-direction:column;
-    align-items:flex-start;                   /* left aligned blocks */
-    gap:12px;
+    grid-template-columns: 1fr;            /* stack items */
+    grid-template-areas:
+      "brand"
+      "links"
+      "top";
+    justify-items: center;                  /* center everything */
+    text-align: center;
+    gap: 12px;
   }
-  .footer-left{ order:1; }
-  .to-top{ order:2; align-self:flex-end; }   /* arrow right side */
+  /* map existing children to the areas (no HTML change needed) */
+  .footer-grid > :nth-child(1){ grid-area: brand; }   /* logo + copyright */
+  .footer-links{ grid-area: links; }
+  .to-top{ grid-area: top; }
+
+  /* links line wrap & spacing */
   .footer-links{
-    order:3;
-    justify-content:flex-start;
-    gap:14px 16px;                            /* row x column gap */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;                         /* rows, columns */
+    justify-content: center;
+  }
+  .footer-links a{
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 4px 0;
+  }
+
+  /* back-to-top button center with larger tap area */
+  .to-top{
+    width: 44px;
+    height: 44px;
+    margin-top: 4px;
+    position: static;                       /* no weird alignment */
+  }
+
+  /* small text tweaks */
+  .site-footer .muted{
+    line-height: 1.35;
   }
 }
 
-/* safety: remove any accidental right alignment coming from elsewhere */
-.site-footer [style*="text-align:right"]{ text-align:left !important; }
+

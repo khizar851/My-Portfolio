@@ -162,3 +162,8 @@ document.addEventListener("DOMContentLoaded", function () {
     y.textContent = new Date().getFullYear();
   }
 });
+
+document.querySelector('.to-top')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});

@@ -464,3 +464,43 @@ a { color: var(--acc); text-decoration: none; }
 }
 .faq[open] .chev { transform: rotate(225deg); border-color: var(--acc); }
 
+
+/* --- Mobile centering & overflow fix --- */
+html, body { width:100%; overflow-x:hidden; text-align:left; }
+
+/* container always centered */
+.container {
+  width: min(1100px, 90%);
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* sections never push content to right */
+.section > .container { display:block; }
+
+/* 2-col grids should stack on mobile */
+@media (max-width: 640px){
+  .container {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .grid-2 { grid-template-columns: 1fr !important; }
+}
+
+/* cards/lists forms ko bhi center hold karao */
+.skills, .skills-list, .contact-form, .project, .hero .content {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* koi rule agar galti se right align kar raha ho to neutralize */
+[style*="text-align:right"], .text-right { text-align:left !important; }
+
+/* prevent sneaky shifts caused by translate on mobile */
+@media (max-width:640px){
+  [style*="translateX"] { transform: none !important; }
+}
+
+/* just in case: images never cause horizontal scroll */
+img { max-width:100%; height:auto; display:block; }

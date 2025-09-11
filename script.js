@@ -153,4 +153,12 @@ Message: ${message}`;
 
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
+
   });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const y = document.getElementById("year");
+  if (y) {
+    y.textContent = new Date().getFullYear();
+  }
+});

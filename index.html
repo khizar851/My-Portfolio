@@ -41,7 +41,7 @@
 
 <body>
   <!-- ====== Header / Nav ====== -->
-  <header class="site-header">
+  <header id="top" class="site-header">
     <div class="container nav-wrap">
       <a href="#home" class="logo">Khizar<span>.</span></a>
       <nav id="nav" class="nav">
@@ -483,26 +483,32 @@
 </section>
 
 
-  <!-- ====== Footer ====== -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <a href="#home" class="logo">Khizar<span>.</span></a>
-        <p class="muted">Copyright © <span id="year"></span> — Built with ♥</p>
+   <!-- ====== Footer ====== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Left -->
+      <div class="footer-left">
+        <a href="#top" class="logo">Khizar<span>.</span></a>
+        <p class="footer-copy muted">Copyright © <span id="year"></span> — Built with ♥</p>
       </div>
-      <div class="footer-links">
+
+      <!-- Center links -->
+      <nav class="footer-links" aria-label="Footer">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
-        </div>
+      </nav>
 
-<a href="#top" class="to-top">↑</a>
-
+      <!-- Right: back to top -->
+      <a href="#top" class="to-top" aria-label="Back to top">↑</a>
     </div>
-  </footer>
+  </div>
+</footer>
 
   <script src="script.js"></script>
 </body>
 </html>
+
 

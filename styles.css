@@ -504,3 +504,49 @@ html, body { width:100%; overflow-x:hidden; text-align:left; }
 
 /* just in case: images never cause horizontal scroll */
 img { max-width:100%; height:auto; display:block; }
+
+/* Footer layout: switch to flex for better wrap control */
+.footer-grid{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding-block:16px;
+}
+
+/* left block (logo + copy) */
+.footer-left{display:flex; flex-direction:column; gap:6px; min-width:0;}
+.footer-copy{white-space:nowrap;}            /* "Copyright 2025 — Built with ♥" ek line me */
+
+/* center links: inline row */
+.footer-links{
+  display:flex;
+  gap:20px;
+  align-items:center;
+  justify-content:center;
+  flex:1 1 auto;
+  flex-wrap:wrap;                             /* desktop pe space kam ho to graceful wrap */
+}
+.footer-links a{ display:inline-block; white-space:nowrap; }
+
+/* to-top button on the right by default */
+.to-top{ flex:0 0 auto; }
+
+/* ----- Mobile tuning ----- */
+@media (max-width: 720px){
+  .footer-grid{
+    flex-direction:column;
+    align-items:flex-start;                   /* left aligned blocks */
+    gap:12px;
+  }
+  .footer-left{ order:1; }
+  .to-top{ order:2; align-self:flex-end; }   /* arrow right side */
+  .footer-links{
+    order:3;
+    justify-content:flex-start;
+    gap:14px 16px;                            /* row x column gap */
+  }
+}
+
+/* safety: remove any accidental right alignment coming from elsewhere */
+.site-footer [style*="text-align:right"]{ text-align:left !important; }

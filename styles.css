@@ -73,7 +73,7 @@ a { color: var(--acc); text-decoration: none; }
 .container { width:min(1100px, 90%); margin-inline:auto; }
 
 /* -------- Utilities -------- */
-.section { padding: 88px 0; position: relative; }
+.section { padding: 60px 0; position: relative; }
 .section.alt { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)); }
 .section-title { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); margin: 0 0 20px; }
 .section-title.center { text-align:center; margin-bottom: 28px; }
@@ -511,5 +511,6 @@ a { color: var(--acc); text-decoration: none; }
     line-height: 1.35;
   }
 }
+
 
 

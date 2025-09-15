@@ -513,4 +513,34 @@ a { color: var(--acc); text-decoration: none; }
 }
 
 
+/* FAQ + Testimonials Grid */
+.faq-wrap, .testimonials-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 920px) {
+  .faq-wrap, .testimonials-wrap {
+    padding: 16px;
+  }
+}
+
+
+.testimonial-photo {
+  margin-top: 20px;
+  text-align: center;
+}
+.testimonial-photo img {
+  width: 100%;
+  aspect-ratio: 4/3;  
+  object-fit: cover;      /* crop kare instead of stretch */
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  display: block;
+}
+
 
